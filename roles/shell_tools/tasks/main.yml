@@ -1,0 +1,16 @@
+---
+- name: Install Zsh and shell utilities
+  apt:
+    name:
+      - zsh
+      - tmux
+      - fzf
+      - ripgrep
+      - bat
+    state: present
+
+- name: Set Zsh as default shell for target user
+  user:
+    name: "{{ target_user }}"
+    shell: /bin/zsh
+  when: install_zsh | default(true)

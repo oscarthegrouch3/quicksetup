@@ -1,0 +1,43 @@
+---
+# User Configuration
+target_user: "{{ ansible_env.SUDO_USER | default(ansible_user_id) }}"
+target_user_home: "/home/{{ target_user }}"
+
+# Feature Toggles
+install_desktop_apps: true
+install_dev_tools: true
+install_shell_tools: true
+
+# Desktop Apps Toggles
+install_vscode: true
+install_firefox: true
+install_postman: true
+install_ghostty: true
+
+# Dev Tools Toggles
+install_docker: true
+install_neovim: true
+
+# Shell & Utilities Toggles
+install_zsh: true
+
+# Base packages to install via APT
+common_packages:
+  - curl
+  - wget
+  - git
+  - build-essential
+  - software-properties-common
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+  - lsb-release
+  - htop
+  - btop
+  - jq
+  - unzip
+  - tree
+  - ripgrep
+  - fd-find
+  - fzf
+  - tmux

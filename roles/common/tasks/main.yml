@@ -1,0 +1,16 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install common utility packages
+  apt:
+    name: "{{ common_packages }}"
+    state: present
+
+- name: Ensure keyrings directory exists
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'

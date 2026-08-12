@@ -1,0 +1,13 @@
+---
+- name: Check if firefox package is available in apt
+  apt:
+    name: firefox
+    state: present
+  ignore_errors: true
+  register: firefox_apt_result
+
+- name: Install Firefox ESR via apt if firefox package fails
+  apt:
+    name: firefox-esr
+    state: present
+  when: firefox_apt_result is failed

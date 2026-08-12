@@ -1,0 +1,8 @@
+---
+- name: Include Docker setup
+  include_tasks: docker.yml
+  when: install_docker | default(true)
+
+- name: Include Neovim setup
+  include_tasks: neovim.yml
+  when: install_neovim | default(true)

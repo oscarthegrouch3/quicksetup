@@ -1,0 +1,3 @@
+---
+# Legacy playbook wrapper pointing to the site.yml structure
+- import_playbook: site.yml

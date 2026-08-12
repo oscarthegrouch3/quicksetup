@@ -1,0 +1,6 @@
+---
+- name: Install Ghostty via Snap
+  snap:
+    name: ghostty
+    classic: yes
+    state: present

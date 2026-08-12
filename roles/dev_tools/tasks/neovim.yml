@@ -1,0 +1,5 @@
+---
+- name: Install Neovim via APT
+  apt:
+    name: neovim
+    state: present
