@@ -1,0 +1,6 @@
+---
+# Offensive VM Setup: Desktop, Shell, and Offensive
+install_desktop: true
+install_shell: true
+install_offensive: true
+install_development: false

@@ -1,0 +1,11 @@
+---
+# Desktop Setup: Desktop, Shell, and Postman
+install_desktop: true
+install_shell: true
+install_development: true
+install_offensive: false
+
+# Specific App Overrides
+install_postman: true
+install_docker: false
+install_neovim: false
