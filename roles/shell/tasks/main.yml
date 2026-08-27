@@ -4,9 +4,8 @@
     name:
       - zsh
       - tmux
-      - fzf
-      - ripgrep
       - bat
+      - htop
     state: present
 
 - name: Set Zsh as default shell for target user

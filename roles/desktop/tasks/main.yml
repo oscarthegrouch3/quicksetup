@@ -7,10 +7,6 @@
   include_tasks: vscode.yml
   when: install_vscode | default(true)
 
-- name: Include Postman setup
-  include_tasks: postman.yml
-  when: install_postman | default(true)
-
 - name: Include Ghostty setup
   include_tasks: ghostty.yml
   when: install_ghostty | default(true)

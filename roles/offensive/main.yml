@@ -35,12 +35,6 @@
 - name: Install Proxychains
   ansible.builtin.include_tasks: proxychains.yml
 
-- name: Install BloodHound + Neo4j
-  ansible.builtin.include_tasks: bloodhound.yml
-
-- name: Install SharpHound
-  ansible.builtin.include_tasks: sharphound.yml
-
 - name: Install Impacket suite
   ansible.builtin.include_tasks: impacket.yml
 

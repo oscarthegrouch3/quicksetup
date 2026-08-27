@@ -1,0 +1,6 @@
+---
+- name: Install Firefox ESR via apt if firefox package fails
+  apt:
+    name: firefox-esr
+    state: present
+  when: firefox_apt_result is failed

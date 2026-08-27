@@ -6,3 +6,7 @@
 - name: Include Neovim setup
   include_tasks: neovim.yml
   when: install_neovim | default(true)
+
+- name: Include Postman setup
+  include_tasks: postman.yml
+  when: install_postman | default(true)
