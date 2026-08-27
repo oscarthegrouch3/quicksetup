@@ -1,0 +1,11 @@
+---
+- name: Check if Impacket is already installed via pipx
+  ansible.builtin.command: pipx list --short
+  become: false
+  register: pipx_list_impacket
+  changed_when: false
+
+- name: Install Impacket via pipx
+  ansible.builtin.command: pipx install impacket
+  become: false
+  when: "'impacket' not in pipx_list_impacket.stdout"

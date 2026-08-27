@@ -1,0 +1,6 @@
+---
+- name: Install netcat-traditional (provides classic nc syntax)
+  ansible.builtin.apt:
+    name: netcat-traditional
+    state: present
+    update_cache: yes

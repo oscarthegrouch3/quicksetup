@@ -1,0 +1,6 @@
+---
+- name: Install John the Ripper
+  ansible.builtin.apt:
+    name: john
+    state: present
+    update_cache: yes

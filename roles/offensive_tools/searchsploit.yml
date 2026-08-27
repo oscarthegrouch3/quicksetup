@@ -1,0 +1,20 @@
+---
+- name: Clone exploitdb repo
+  ansible.builtin.git:
+    repo: https://gitlab.com/exploit-database/exploitdb.git
+    dest: /opt/exploitdb
+    depth: 1
+    version: main
+
+- name: Symlink searchsploit into PATH
+  ansible.builtin.file:
+    src: /opt/exploitdb/searchsploit
+    dest: /usr/local/bin/searchsploit
+    state: link
+
+- name: Symlink searchsploit rc config
+  ansible.builtin.copy:
+    src: /opt/exploitdb/.searchsploit_rc
+    dest: "{{ ansible_env.HOME }}/.searchsploit_rc"
+    remote_src: yes
+    force: no

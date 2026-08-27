@@ -1,0 +1,26 @@
+---
+- name: Ensure a JRE is installed for Burp Suite
+  ansible.builtin.apt:
+    name: default-jre
+    state: present
+    update_cache: yes
+
+- name: Create Burp Suite install directory
+  ansible.builtin.file:
+    path: /opt/offensive-tools/burpsuite
+    state: directory
+    mode: '0755'
+
+- name: Download Burp Suite Community jar installer
+  ansible.builtin.get_url:
+    url: "https://portswigger.net/burp/releases/download?product=community&type=jar"
+    dest: /opt/offensive-tools/burpsuite/burpsuite_community.jar
+    mode: '0755'
+
+- name: Create launcher script
+  ansible.builtin.copy:
+    dest: /usr/local/bin/burpsuite
+    mode: '0755'
+    content: |
+      #!/bin/bash
+      java -jar /opt/offensive-tools/burpsuite/burpsuite_community.jar "$@"

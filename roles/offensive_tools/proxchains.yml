@@ -1,0 +1,6 @@
+---
+- name: Install proxychains4
+  ansible.builtin.apt:
+    name: proxychains4
+    state: present
+    update_cache: yes

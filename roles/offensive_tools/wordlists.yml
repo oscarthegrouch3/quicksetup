@@ -1,0 +1,22 @@
+---
+- name: Install Debian wordlists package (includes rockyou.txt.gz)
+  ansible.builtin.apt:
+    name: wordlists
+    state: present
+    update_cache: yes
+
+- name: Check if rockyou.txt is already decompressed
+  ansible.builtin.stat:
+    path: /usr/share/wordlists/rockyou.txt
+  register: rockyou_stat
+
+- name: Decompress rockyou.txt.gz
+  ansible.builtin.command: gunzip -k /usr/share/wordlists/rockyou.txt.gz
+  when: not rockyou_stat.stat.exists
+
+- name: Clone SecLists
+  ansible.builtin.git:
+    repo: https://github.com/danielmiessler/SecLists.git
+    dest: /opt/offensive-tools/seclists
+    depth: 1
+    version: master

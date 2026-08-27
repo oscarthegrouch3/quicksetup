@@ -1,0 +1,22 @@
+---
+- name: Set chisel version
+  ansible.builtin.set_fact:
+    chisel_version: "1.11.8"
+
+- name: Download chisel binary
+  ansible.builtin.get_url:
+    url: "https://github.com/jpillora/chisel/releases/download/v{{ chisel_version }}/chisel_{{ chisel_version }}_linux_amd64.gz"
+    dest: "/tmp/chisel.gz"
+    mode: '0644'
+
+- name: Extract chisel
+  ansible.builtin.command: gunzip -f /tmp/chisel.gz
+  args:
+    creates: /tmp/chisel
+
+- name: Install chisel to /usr/local/bin
+  ansible.builtin.copy:
+    src: /tmp/chisel
+    dest: /usr/local/bin/chisel
+    mode: '0755'
+    remote_src: yes

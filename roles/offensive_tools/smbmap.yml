@@ -1,0 +1,11 @@
+---
+- name: Check if smbmap is already installed via pipx
+  ansible.builtin.command: pipx list --short
+  become: false
+  register: pipx_list_smbmap
+  changed_when: false
+
+- name: Install smbmap via pipx
+  ansible.builtin.command: pipx install smbmap
+  become: false
+  when: "'smbmap' not in pipx_list_smbmap.stdout"

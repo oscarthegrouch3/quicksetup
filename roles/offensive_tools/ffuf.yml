@@ -1,0 +1,23 @@
+---
+- name: Set ffuf version
+  ansible.builtin.set_fact:
+    ffuf_version: "2.1.0"
+
+- name: Download ffuf release tarball
+  ansible.builtin.get_url:
+    url: "https://github.com/ffuf/ffuf/releases/download/v{{ ffuf_version }}/ffuf_{{ ffuf_version }}_linux_amd64.tar.gz"
+    dest: "/tmp/ffuf.tar.gz"
+    mode: '0644'
+
+- name: Extract ffuf
+  ansible.builtin.unarchive:
+    src: /tmp/ffuf.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: Install ffuf to /usr/local/bin
+  ansible.builtin.copy:
+    src: /tmp/ffuf
+    dest: /usr/local/bin/ffuf
+    mode: '0755'
+    remote_src: yes

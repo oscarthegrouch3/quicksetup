@@ -1,0 +1,11 @@
+---
+- name: Check if NetExec is already installed via pipx
+  ansible.builtin.command: pipx list --short
+  become: false
+  register: pipx_list_netexec
+  changed_when: false
+
+- name: Install NetExec via pipx
+  ansible.builtin.command: pipx install netexec
+  become: false
+  when: "'netexec' not in pipx_list_netexec.stdout"

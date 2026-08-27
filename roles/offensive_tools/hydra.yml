@@ -1,0 +1,6 @@
+---
+- name: Install hydra
+  ansible.builtin.apt:
+    name: hydra
+    state: present
+    update_cache: yes

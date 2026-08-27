@@ -1,0 +1,12 @@
+---
+- name: Create PEASS tools directory
+  ansible.builtin.file:
+    path: /opt/offensive-tools/peass
+    state: directory
+    mode: '0755'
+
+- name: Download linpeas.sh
+  ansible.builtin.get_url:
+    url: "https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh"
+    dest: /opt/offensive-tools/peass/linpeas.sh
+    mode: '0755'

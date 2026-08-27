@@ -1,0 +1,72 @@
+---
+- name: Ensure base prerequisites are present
+  ansible.builtin.apt:
+    name:
+      - git
+      - curl
+      - wget
+      - unzip
+      - python3-pip
+      - pipx
+      - build-essential
+    state: present
+    update_cache: yes
+
+- name: Ensure pipx path is configured
+  ansible.builtin.command: pipx ensurepath
+  become: false
+  changed_when: false
+
+- name: Install Nmap
+  ansible.builtin.include_tasks: nmap.yml
+
+- name: Install Netcat
+  ansible.builtin.include_tasks: netcat.yml
+
+- name: Install Chisel
+  ansible.builtin.include_tasks: chisel.yml
+
+- name: Install NetExec
+  ansible.builtin.include_tasks: netexec.yml
+
+- name: Install SearchSploit
+  ansible.builtin.include_tasks: searchsploit.yml
+
+- name: Install Proxychains
+  ansible.builtin.include_tasks: proxychains.yml
+
+- name: Install BloodHound + Neo4j
+  ansible.builtin.include_tasks: bloodhound.yml
+
+- name: Install SharpHound
+  ansible.builtin.include_tasks: sharphound.yml
+
+- name: Install Impacket suite
+  ansible.builtin.include_tasks: impacket.yml
+
+- name: Install LinPEAS
+  ansible.builtin.include_tasks: linpeas.yml
+
+- name: Install WinPEAS
+  ansible.builtin.include_tasks: winpeas.yml
+
+- name: Clone GTFOBins (offline reference)
+  ansible.builtin.include_tasks: gtfobins.yml
+
+- name: Install wordlists
+  ansible.builtin.include_tasks: wordlists.yml
+
+- name: Install Hydra
+  ansible.builtin.include_tasks: hydra.yml
+
+- name: Install John the Ripper
+  ansible.builtin.include_tasks: john.yml
+
+- name: Install Burp Suite Community
+  ansible.builtin.include_tasks: burpsuite.yml
+
+- name: Install ffuf
+  ansible.builtin.include_tasks: ffuf.yml
+
+- name: Install smbmap
+  ansible.builtin.include_tasks: smbmap.yml

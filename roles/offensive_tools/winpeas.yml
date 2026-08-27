@@ -1,0 +1,18 @@
+---
+- name: Create PEASS tools directory
+  ansible.builtin.file:
+    path: /opt/offensive-tools/peass
+    state: directory
+    mode: '0755'
+
+- name: Download winPEASx64.exe
+  ansible.builtin.get_url:
+    url: "https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASx64.exe"
+    dest: /opt/offensive-tools/peass/winPEASx64.exe
+    mode: '0755'
+
+- name: Download winPEASany.exe
+  ansible.builtin.get_url:
+    url: "https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASany.exe"
+    dest: /opt/offensive-tools/peass/winPEASany.exe
+    mode: '0755'
