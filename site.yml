@@ -4,9 +4,11 @@
   become: true
   roles:
     - role: common
-    - role: dev_tools
-      when: install_dev_tools | default(true)
-    - role: desktop_apps
-      when: install_desktop_apps | default(true)
-    - role: shell_tools
-      when: install_shell_tools | default(true)
+    - role: desktop
+      when: install_desktop | default(false)
+    - role: development
+      when: install_development | default(false)
+    - role: offensive
+      when: install_offensive | default(false)
+    - role: shell
+      when: install_shell | default(false)

@@ -19,10 +19,6 @@ If Ansible is already installed:
 # Provision local VM
 sudo ansible-playbook -i inventory.ini site.yml --connection=local
 
-# Provision a remote VM over SSH
-ansible-playbook -i inventory.ini site.yml --ask-become-pass
-```
-
 ---
 
 ## Included Applications & Tools
@@ -30,7 +26,6 @@ ansible-playbook -i inventory.ini site.yml --ask-become-pass
 ### Desktop Applications
 - **Firefox** (`apt` / `firefox-esr`)
 - **VS Code** (Official Microsoft APT repository)
-- **Postman** (Official Snap package)
 - **Ghostty** (Snap package with classic confinement)
 
 ### Developer Tools
@@ -39,13 +34,13 @@ ansible-playbook -i inventory.ini site.yml --ask-become-pass
 
 ### Shell & CLI Utilities
 - **Zsh** (Set as default user shell)
-- **CLI Tools**: `curl`, `wget`, `git`, `build-essential`, `htop`, `btop`, `jq`, `unzip`, `tree`, `ripgrep`, `fd-find`, `fzf`, `tmux`, `bat`
+- **CLI Tools**: `curl`, `wget`, `git`, `build-essential`, `htop`, `jq`, `unzip`, `tree`, `tmux`
 
 ---
 
 ## Customization & Configuration
 
-All options can be enabled or disabled in [`group_vars/all.yml`](file:///home/oscar/Development/QuickSetup/quicksetup/group_vars/all.yml):
+All options can be enabled or disabled in [`group_vars/all.yml`]
 
 ```yaml
 # Feature Toggles
@@ -61,25 +56,3 @@ install_ghostty: true
 install_docker: true
 install_neovim: true
 install_zsh: true
-```
-
----
-
-## Project Structure
-
-```
-quicksetup/
-├── ansible.cfg              # Ansible configuration
-├── bootstrap.sh             # Self-installing bootstrap script for fresh VMs
-├── inventory.ini            # Localhost & remote VM inventory
-├── hosts.ini                # Alias inventory file
-├── site.yml                 # Master Ansible playbook
-├── app_setup.yml            # Legacy playbook entry point
-├── group_vars/
-│   └── all.yml              # Feature toggles and variable configuration
-└── roles/
-    ├── common/              # System updates & base packages
-    ├── desktop_apps/        # Firefox, VS Code, Postman, Ghostty
-    ├── dev_tools/           # Docker CE & Neovim
-    └── shell_tools/         # Zsh, tmux & CLI tools
-```
