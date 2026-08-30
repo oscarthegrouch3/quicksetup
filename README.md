@@ -31,6 +31,8 @@ sudo ansible-playbook -i inventory.ini site.yml --connection=local
 ### Developer Tools
 - **Docker & Docker Compose** (Official Docker APT repository + `docker` user group addition)
 - **Neovim** (`apt`)
+- **Postman** (API client)
+- **Pi Coding Agent** (Minimal terminal coding harness)
 
 ### Shell & CLI Utilities
 - **Zsh** (Set as default user shell)
@@ -55,4 +57,5 @@ install_postman: true
 install_ghostty: true
 install_docker: true
 install_neovim: true
+install_pi_agent: true
 install_zsh: true

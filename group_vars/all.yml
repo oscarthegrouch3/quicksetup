@@ -2,3 +2,9 @@
 # User Configuration
 target_user: "{{ ansible_env.SUDO_USER | default(ansible_user_id) }}"
 target_user_home: "/home/{{ target_user }}"
+
+# Development Tools
+install_docker: true
+install_neovim: true
+install_postman: true
+install_pi_agent: true
