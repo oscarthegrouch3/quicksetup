@@ -10,3 +10,7 @@
 - name: Include Postman setup
   include_tasks: postman.yml
   when: install_postman | default(true)
+
+- name: Include pi agent setup
+  include_tasks: pi.yml
+  when: install_pi_agent | default(true)

@@ -1,0 +1,5 @@
+---
+- name: Install pi agent
+  shell: curl -fsSL https://pi.sh | sh
+  args:
+    creates: ~/.local/bin/pi
